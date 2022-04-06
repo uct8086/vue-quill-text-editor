@@ -1,4 +1,4 @@
-# vue-quill-editor
+# vue-quill-text-editor
 Quill rich text editor component encapsulated with Vue3
 
 
@@ -9,12 +9,12 @@ Quill rich text editor component encapsulated with Vue3
 # import into project:
 
 ```javascript
-import VueQuillEditor from 'vue-quill-editor';
-import 'vue-quill-editor/dist/vue-quill-editor.esm.css';
+import VueQuillTextEditor from 'vue-quill-text-editor';
+import 'vue-quill-text-editor/dist/vue-quill-text-editor.esm.css';
 
 ...
 
-app.use(VueQuillEditor);
+app.use(VueQuillTextEditor);
 
 app.mount("#app-wrapper");
 

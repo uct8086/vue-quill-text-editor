@@ -9,7 +9,7 @@ import "quill/dist/quill.snow.css";
 import { QuillProps } from "./props";
 
 export default defineComponent({
-  name: "VueQuillEditor",
+  name: "VueQuillTextEditor",
   props: QuillProps,
   // emits: ["blur", "focus", "disable", "enable", "hasFocus", "update"],
   setup(props) {
