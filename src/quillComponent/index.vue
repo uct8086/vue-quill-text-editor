@@ -41,6 +41,6 @@ export default defineComponent({
 <style lang="less" scoped>
 .quill-container {
   margin: 0;
-  height: 500px;
+  min-height: 400px;
 }
 </style>
