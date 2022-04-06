@@ -1,6 +1,6 @@
 {
   "name": "vue-quill-text-editor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Quill rich text editor component encapsulated with Vue3",
   "author": "uct8086",
   "license": "ISC",
@@ -13,6 +13,18 @@
     "build:umd": "rollup --config build/rollup.umd.config.js",
     "clean": "rimraf ./dist"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uct8086/vue-quill-text-editor.git"
+  },
+  "keywords": [
+    "quill",
+    "vue3"
+  ],
+  "bugs": {
+    "url": "https://github.com/uct8086/vue-quill-text-editor/issues"
+  },
+  "homepage": "https://github.com/uct8086/vue-quill-text-editor#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^11.1.1",
     "@vue/compiler-sfc": "^3.0.0",
