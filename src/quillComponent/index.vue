@@ -15,7 +15,6 @@ export default defineComponent({
   setup(props) {
     const date = +new Date();
     const quillId = `quill_${date}`;
-    const toolbarId = `toolbar_${date}`;
     const quillInstance = ref();
 
     onMounted(() => {
@@ -28,7 +27,6 @@ export default defineComponent({
         placeholder: props.placeholder,
         theme: "snow",
       });
-      console.log(quillInstance.value);
     });
 
     return {
