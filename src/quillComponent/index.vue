@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import { onMounted } from "vue";
+import { onMounted, defineComponent } from "vue";
 import Quill from "quill";
-import { QuillProps } from "./props";
+// import { QuillProps } from "./props";
 
 export default defineComponent({
   name: "VueQuillEditor",
-  props: QuillProps,
+  // props: QuillProps,
   emits: ["scroll"],
   setup(props, { emit }) {
     const date = +new Date();
