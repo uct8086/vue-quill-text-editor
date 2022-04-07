@@ -1,5 +1,5 @@
 <template>
-  <div :id="quillId" class="quill-container"></div>
+  <div ref="quillRef" class="quill-container"></div>
 </template>
 
 <script>
@@ -13,13 +13,12 @@ export default defineComponent({
   props: QuillProps,
   // emits: ["blur", "focus", "disable", "enable", "hasFocus", "update"],
   setup(props) {
-    const date = +new Date();
-    const quillId = `quill_${date}`;
+    const quillRef = ref();
     const quillInstance = ref();
 
     onMounted(() => {
       const toolbarOptions = props.toolbarOptions;
-      quillInstance.value = new Quill(`#${quillId}`, {
+      quillInstance.value = new Quill(quillRef.value, {
         debug: "error",
         modules: {
           toolbar: toolbarOptions,
@@ -30,8 +29,7 @@ export default defineComponent({
     });
 
     return {
-      quillId,
-      toolbarId,
+      quillRef,
       quillInstance,
     };
   },
