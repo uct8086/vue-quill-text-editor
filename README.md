@@ -41,4 +41,14 @@ setup() {
 
 ```
 
+# props:
+
+|name|type|default|
+|---|---|---|
+|placeholder|String|请输入......|
+|toolbarOptions|Array|official demo config|
+
+---
+
+
 # same as official quill, enjoy!
