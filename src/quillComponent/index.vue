@@ -40,5 +40,6 @@ export default defineComponent({
 .quill-container {
   margin: 0;
   min-height: 400px;
+  width: 100%;
 }
 </style>
