@@ -1,11 +1,22 @@
-export const QuillProps = {
-    placeholder: {
-        type: String,
-        default: '请输入......',
-    },
-    toolbarOptions: {
-        type: Array,
-        default: [
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./quill.snow.css" rel="stylesheet">
+    <script src="./quill.js"></script>
+    <title>demo</title>
+</head>
+<body>
+    <div id="test"></div>
+
+</body>
+<script type="module">
+const dom = document.getElementById('test');
+let quill = new Quill(dom, {
+    modules: {
+        toolbar: [
             ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
             ['blockquote', 'code-block'],
 
@@ -24,5 +35,15 @@ export const QuillProps = {
             ['clean']                                         // remove formatting button
         ]
     },
-    
-};
+    theme: 'snow'
+  });
+quill.on('text-change', function(delta, oldDelta, source) {
+    debugger;
+  if (source == 'api') {
+    console.log("An API call triggered this change.");
+  } else if (source == 'user') {
+    console.log("A user action triggered this change.");
+  }
+});
+</script>
+</html>

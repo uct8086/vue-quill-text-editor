@@ -1,24 +1,19 @@
-import { defineComponent, ref, onMounted, openBlock, createElementBlock } from 'vue';
-
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-var quill = {exports: {}};
-
 /*!
  * Quill Editor v1.3.6
  * https://quilljs.com/
  * Copyright (c) 2014, Jason Chen
  * Copyright (c) 2013, salesforce.com
  */
-
-(function (module, exports) {
 (function webpackUniversalModuleDefinition(root, factory) {
-	module.exports = factory();
-})(typeof self !== 'undefined' ? self : commonjsGlobal, function() {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Quill"] = factory();
+	else
+		root["Quill"] = factory();
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -88,6 +83,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 var container_1 = __webpack_require__(17);
 var format_1 = __webpack_require__(18);
@@ -129,6 +126,8 @@ exports.default = Parchment;
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -350,11 +349,11 @@ Delta.prototype.push = function (newOp) {
     if (equal(newOp.attributes, lastOp.attributes)) {
       if (typeof newOp.insert === 'string' && typeof lastOp.insert === 'string') {
         this.ops[index - 1] = { insert: lastOp.insert + newOp.insert };
-        if (typeof newOp.attributes === 'object') this.ops[index - 1].attributes = newOp.attributes;
+        if (typeof newOp.attributes === 'object') this.ops[index - 1].attributes = newOp.attributes
         return this;
       } else if (typeof newOp.retain === 'number' && typeof lastOp.retain === 'number') {
         this.ops[index - 1] = { retain: lastOp.retain + newOp.retain };
-        if (typeof newOp.attributes === 'object') this.ops[index - 1].attributes = newOp.attributes;
+        if (typeof newOp.attributes === 'object') this.ops[index - 1].attributes = newOp.attributes
         return this;
       }
     }
@@ -614,6 +613,8 @@ module.exports = Delta;
 /* 3 */
 /***/ (function(module, exports) {
 
+'use strict';
+
 var hasOwn = Object.prototype.hasOwnProperty;
 var toStr = Object.prototype.toString;
 
@@ -703,6 +704,8 @@ module.exports = function extend() {
 /***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -959,6 +962,8 @@ exports.default = Block;
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -1528,7 +1533,7 @@ Quill.DEFAULTS = {
 Quill.events = _emitter4.default.events;
 Quill.sources = _emitter4.default.sources;
 // eslint-disable-next-line no-undef
-Quill.version =  "1.3.6";
+Quill.version =  false ? 'dev' : "1.3.6";
 
 Quill.imports = {
   'delta': _quillDelta2.default,
@@ -1693,6 +1698,8 @@ exports.default = Quill;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1781,6 +1788,8 @@ exports.default = Inline;
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1815,6 +1824,8 @@ exports.default = TextBlot;
 /***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -1930,6 +1941,8 @@ exports.default = Emitter;
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1953,6 +1966,8 @@ exports.default = Module;
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -2017,7 +2032,7 @@ var deepEqual = module.exports = function (actual, expected, opts) {
   } else {
     return objEquiv(actual, expected, opts);
   }
-};
+}
 
 function isUndefinedOrNull(value) {
   return value === null || value === undefined;
@@ -2090,6 +2105,8 @@ function objEquiv(a, b, opts) {
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 var Registry = __webpack_require__(1);
 var Attributor = /** @class */ (function () {
@@ -2150,6 +2167,8 @@ exports.default = Attributor;
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -2350,6 +2369,8 @@ exports.default = CodeBlock;
 /***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -2716,6 +2737,8 @@ exports.default = Editor;
 /***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -3204,6 +3227,8 @@ exports.default = Selection;
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3271,6 +3296,8 @@ exports.default = Break;
 /***/ }),
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3536,6 +3563,8 @@ exports.default = ContainerBlot;
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3615,6 +3644,8 @@ exports.default = FormatBlot;
 /***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3734,7 +3765,8 @@ function Iterator(ops) {
   this.ops = ops;
   this.index = 0;
   this.offset = 0;
-}
+};
+
 Iterator.prototype.hasNext = function () {
   return this.peekLength() < Infinity;
 };
@@ -3744,7 +3776,7 @@ Iterator.prototype.next = function (length) {
   var nextOp = this.ops[this.index];
   if (nextOp) {
     var offset = this.offset;
-    var opLength = lib.length(nextOp);
+    var opLength = lib.length(nextOp)
     if (length >= opLength - offset) {
       length = opLength - offset;
       this.index += 1;
@@ -3809,6 +3841,7 @@ module.exports = lib;
 /***/ (function(module, exports) {
 
 var clone = (function() {
+'use strict';
 
 function _instanceof(obj, type) {
   return type != null && obj instanceof type;
@@ -4064,6 +4097,8 @@ if (typeof module === 'object' && module.exports) {
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -4314,6 +4349,8 @@ exports.default = Scroll;
 /***/ }),
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -4919,6 +4956,8 @@ exports.SHORTKEY = SHORTKEY;
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -5100,6 +5139,8 @@ exports.default = Cursor;
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -5140,6 +5181,8 @@ exports.default = Container;
 /***/ }),
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -5201,6 +5244,8 @@ exports.ColorStyle = ColorStyle;
 /***/ }),
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -5283,6 +5328,8 @@ exports.sanitize = _sanitize;
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -5337,6 +5384,7 @@ var Picker = function () {
           _this.escape();
           event.preventDefault();
           break;
+        default:
       }
     });
     this.select.addEventListener('change', this.update.bind(this));
@@ -5382,6 +5430,7 @@ var Picker = function () {
             _this2.escape();
             event.preventDefault();
             break;
+          default:
         }
       });
 
@@ -5519,6 +5568,8 @@ exports.default = Picker;
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -5601,6 +5652,8 @@ exports.default = _quill2.default;
 /***/ }),
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var Registry = __webpack_require__(1);
@@ -5763,6 +5816,8 @@ exports.default = ShadowBlot;
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 var attributor_1 = __webpack_require__(12);
 var class_1 = __webpack_require__(32);
@@ -5838,6 +5893,8 @@ exports.default = AttributorStore;
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5898,6 +5955,8 @@ exports.default = ClassAttributor;
 /***/ }),
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -5960,6 +6019,8 @@ exports.default = StyleAttributor;
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6013,6 +6074,8 @@ exports.default = Theme;
 /***/ }),
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -6133,6 +6196,8 @@ exports.default = Embed;
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6162,6 +6227,8 @@ exports.AlignStyle = AlignStyle;
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6189,6 +6256,8 @@ exports.BackgroundStyle = BackgroundStyle;
 /***/ }),
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -6218,6 +6287,8 @@ exports.DirectionStyle = DirectionStyle;
 /***/ }),
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -6276,6 +6347,8 @@ exports.FontClass = FontClass;
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6303,6 +6376,8 @@ exports.SizeStyle = SizeStyle;
 /***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 module.exports = {
@@ -6358,6 +6433,8 @@ module.exports = {
 /***/ }),
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -6524,6 +6601,8 @@ exports.getLastChangeIndex = getLastChangeIndex;
 /***/ }),
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -6823,6 +6902,7 @@ var BaseTooltip = function (_Tooltip) {
             }
             break;
           }
+        default:
       }
       this.textbox.value = '';
       this.hide();
@@ -6864,6 +6944,8 @@ exports.default = BaseTheme;
 /***/ }),
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var LinkedList = /** @class */ (function () {
@@ -7003,6 +7085,8 @@ exports.default = LinkedList;
 /***/ }),
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -7186,6 +7270,8 @@ exports.default = ScrollBlot;
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -7269,6 +7355,8 @@ exports.default = InlineBlot;
 /* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -7343,6 +7431,8 @@ exports.default = BlockBlot;
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -7388,6 +7478,8 @@ exports.default = EmbedBlot;
 /***/ }),
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -7452,6 +7544,7 @@ var TextBlot = /** @class */ (function (_super) {
         }
     };
     TextBlot.prototype.position = function (index, inclusive) {
+        if (inclusive === void 0) { inclusive = false; }
         return [this.domNode, index];
     };
     TextBlot.prototype.split = function (index, force) {
@@ -7488,6 +7581,8 @@ exports.default = TextBlot;
 /***/ }),
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 var elem = document.createElement('div');
@@ -7644,7 +7739,8 @@ function diff_main(text1, text2, cursor_pos) {
   }
   diffs = fix_emoji(diffs);
   return diffs;
-}
+};
+
 
 /**
  * Find the differences between two texts.  Assumes that the texts do not
@@ -7704,7 +7800,8 @@ function diff_compute_(text1, text2) {
   }
 
   return diff_bisect_(text1, text2);
-}
+};
+
 
 /**
  * Find the 'middle snake' of a diff, split the problem in two
@@ -7819,7 +7916,8 @@ function diff_bisect_(text1, text2) {
   // Diff took too long and hit the deadline or
   // number of diffs equals number of characters, no commonality at all.
   return [[DIFF_DELETE, text1], [DIFF_INSERT, text2]];
-}
+};
+
 
 /**
  * Given the location of the 'middle snake', split the diff in two parts
@@ -7841,7 +7939,8 @@ function diff_bisectSplit_(text1, text2, x, y) {
   var diffsb = diff_main(text1b, text2b);
 
   return diffs.concat(diffsb);
-}
+};
+
 
 /**
  * Determine the common prefix of two strings.
@@ -7872,7 +7971,8 @@ function diff_commonPrefix(text1, text2) {
     pointermid = Math.floor((pointermax - pointermin) / 2 + pointermin);
   }
   return pointermid;
-}
+};
+
 
 /**
  * Determine the common suffix of two strings.
@@ -7903,7 +8003,8 @@ function diff_commonSuffix(text1, text2) {
     pointermid = Math.floor((pointermax - pointermin) / 2 + pointermin);
   }
   return pointermid;
-}
+};
+
 
 /**
  * Do the two texts share a substring which is at least half the length of the
@@ -7995,7 +8096,8 @@ function diff_halfMatch_(text1, text2) {
   }
   var mid_common = hm[4];
   return [text1_a, text1_b, text2_a, text2_b, mid_common];
-}
+};
+
 
 /**
  * Reorder and merge like edit sections.  Merge equalities.
@@ -8121,7 +8223,8 @@ function diff_cleanupMerge(diffs) {
   if (changes) {
     diff_cleanupMerge(diffs);
   }
-}
+};
+
 
 var diff = diff_main;
 diff.INSERT = DIFF_INSERT;
@@ -8206,7 +8309,7 @@ function fix_cursor (diffs, cursor_pos) {
     if (d_next != null && d[1] + d_next[1] === d_next[1] + d[1]) {
       // Case 1)
       // It is possible to perform a naive shift
-      ndiffs.splice(cursor_pointer, 2, d_next, d);
+      ndiffs.splice(cursor_pointer, 2, d_next, d)
       return merge_tuples(ndiffs, cursor_pointer, 2)
     } else if (d_next != null && d_next[1].indexOf(d[1]) === 0) {
       // Case 2)
@@ -8238,10 +8341,10 @@ function fix_emoji (diffs) {
   var compact = false;
   var starts_with_pair_end = function(str) {
     return str.charCodeAt(0) >= 0xDC00 && str.charCodeAt(0) <= 0xDFFF;
-  };
+  }
   var ends_with_pair_start = function(str) {
     return str.charCodeAt(str.length-1) >= 0xD800 && str.charCodeAt(str.length-1) <= 0xDBFF;
-  };
+  }
   for (var i = 2; i < diffs.length; i += 1) {
     if (diffs[i-2][0] === DIFF_EQUAL && ends_with_pair_start(diffs[i-2][1]) &&
         diffs[i-1][0] === DIFF_DELETE && starts_with_pair_end(diffs[i-1][1]) &&
@@ -8318,7 +8421,8 @@ exports = module.exports = supportsArgumentsClass ? supported : unsupported;
 exports.supported = supported;
 function supported(object) {
   return Object.prototype.toString.call(object) == '[object Arguments]';
-}
+};
+
 exports.unsupported = unsupported;
 function unsupported(object){
   return object &&
@@ -8327,11 +8431,14 @@ function unsupported(object){
     Object.prototype.hasOwnProperty.call(object, 'callee') &&
     !Object.prototype.propertyIsEnumerable.call(object, 'callee') ||
     false;
-}
+};
+
 
 /***/ }),
 /* 54 */
 /***/ (function(module, exports) {
+
+'use strict';
 
 var has = Object.prototype.hasOwnProperty
   , prefix = '~';
@@ -8647,6 +8754,8 @@ if ('undefined' !== typeof module) {
 /***/ }),
 /* 55 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -9070,6 +9179,8 @@ exports.matchText = matchText;
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -9131,6 +9242,8 @@ exports.default = Bold;
 /***/ }),
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -9461,6 +9574,8 @@ module.exports = "<svg viewbox=\"0 0 18 18\"> <polyline class=\"ql-even ql-strok
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -9530,6 +9645,8 @@ exports.default = ColorPicker;
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -9585,6 +9702,8 @@ exports.default = IconPicker;
 /***/ }),
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -9662,6 +9781,8 @@ exports.default = Tooltip;
 /***/ }),
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -9840,6 +9961,8 @@ exports.default = SnowTheme;
 /***/ }),
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -10020,6 +10143,8 @@ exports.default = _core2.default;
 /* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10091,6 +10216,8 @@ exports.IndentClass = IndentClass;
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10128,6 +10255,8 @@ exports.default = Blockquote;
 /***/ }),
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -10175,6 +10304,8 @@ exports.default = Header;
 /***/ }),
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -10371,6 +10502,8 @@ exports.default = List;
 /* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10408,6 +10541,8 @@ exports.default = Italic;
 /***/ }),
 /* 69 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -10471,6 +10606,8 @@ exports.default = Script;
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10509,6 +10646,8 @@ exports.default = Strike;
 /* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10546,6 +10685,8 @@ exports.default = Underline;
 /***/ }),
 /* 72 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -10643,6 +10784,8 @@ exports.default = Image;
 /* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10733,6 +10876,8 @@ exports.default = Video;
 /***/ }),
 /* 74 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -10830,6 +10975,8 @@ exports.default = Formula;
 /***/ }),
 /* 75 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -11168,6 +11315,8 @@ module.exports = "<svg viewbox=\"0 0 18 18\"> <polygon class=ql-stroke points=\"
 /* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -11338,100 +11487,3 @@ module.exports = __webpack_require__(63);
 /***/ })
 /******/ ])["default"];
 });
-}(quill));
-
-var Quill = /*@__PURE__*/getDefaultExportFromCjs(quill.exports);
-
-const QuillProps = {
-    placeholder: {
-        type: String,
-        default: '请输入......',
-    },
-    toolbarOptions: {
-        type: Array,
-        default: [
-            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            ['blockquote', 'code-block'],
-
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-            [{ 'direction': 'rtl' }],                         // text direction
-
-            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-            [ 'link', 'image' ],          // add's image support
-
-            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-            [{ 'align': [] }],
-
-            ['clean']                                         // remove formatting button
-        ]
-    },
-    
-};
-
-//
-
-var script = defineComponent({
-  name: "VueQuillTextEditor",
-  props: QuillProps,
-  // emits: ["blur", "focus", "disable", "enable", "hasFocus", "update"],
-  setup(props) {
-    const quillRef = ref();
-    const quillInstance = ref();
-
-    onMounted(() => {
-      const toolbarOptions = props.toolbarOptions;
-      quillInstance.value = new Quill(quillRef.value, {
-        debug: "error",
-        modules: {
-          toolbar: toolbarOptions,
-        },
-        placeholder: props.placeholder,
-        theme: "snow",
-      });
-    });
-
-    return {
-      quillRef,
-      quillInstance,
-    };
-  },
-});
-
-const _hoisted_1 = {
-  ref: "quillRef",
-  class: "quill-container"
-};
-
-function render(_ctx, _cache) {
-  return (openBlock(), createElementBlock("div", _hoisted_1, null, 512 /* NEED_PATCH */))
-}
-
-script.render = render;
-script.__scopeId = "data-v-28c6c954";
-script.__file = "src/quillComponent/index.vue";
-
-// import { App } from 'vue'
-script.install = (app) => {
-  app.component(script.name, script);
-};
-
-/* eslint-disable */
-
-const components = [
-    script
-];
-
-// 全局导入
-const install = (app) => {
-    components.forEach(component => {
-        app.component(component.name, component);
-    });
-};
-var index = {
-    install
-};
-
-export { index as default, install, script as quillComponent };
