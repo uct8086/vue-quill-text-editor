@@ -29,8 +29,17 @@ app.mount("#app-wrapper");
 ...
 setup() {
     const quillRef = ref();
-    onMounted(() => {
-        console.log(quillRef);
+    watch(quillRef, async (val) => {
+        const quillInstance = val.quillInstance;
+        quillInstance.enable(!props.disabledEdit);
+        quillInstance.on('text-change', () => {
+            // get html content
+            const content = quillInstance.container.firstChild.innerHTML;
+            console.log('quill content: ', content);
+        });
+        quillInstance.setContents([{ insert: '_' }]);
+        // set html content
+        quillInstance.container.firstChild.innerHTML = temp;
     });
     return {
         quillRef,
