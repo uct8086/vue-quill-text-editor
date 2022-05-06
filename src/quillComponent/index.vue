@@ -4,7 +4,7 @@
 
 <script>
 import { onMounted, defineComponent, ref } from "vue";
-import ImageUploader from 'quill-image-uploader';
+import ImageUploader from './quill.imageUploader';
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import { QuillProps } from "./props";
