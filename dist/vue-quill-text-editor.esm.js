@@ -11544,7 +11544,7 @@ window.ImageUploader = ImageUploader;
 const QuillProps = {
     placeholder: {
         type: String,
-        default: '请输入......',
+        default: '',
     },
     toolbarOptions: {
         type: Array,
@@ -11577,7 +11577,8 @@ var script = defineComponent({
   name: "VueQuillTextEditor",
   props: QuillProps,
   // emits: ["blur", "focus", "disable", "enable", "hasFocus", "update"],
-  setup(props) {
+  emits: ['uploadFun'],
+  setup(props, { emit }) {
     const quillRef = ref();
     const quillInstance = ref();
 
@@ -11588,14 +11589,15 @@ var script = defineComponent({
         modules: {
           toolbar: toolbarOptions,
           imageUploader: {
-            upload: (file) => {
-              return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                  resolve(
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png"
-                  );
-                }, 3500);
-              });
+            upload: async (file) => {
+              return await emit('uploadFun', file);
+              // return new Promise((resolve, reject) => {
+              //   setTimeout(() => {
+              //     resolve(
+              //       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png"
+              //     );
+              //   }, 3500);
+              // });
             },
           },
         },

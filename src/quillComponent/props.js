@@ -1,7 +1,7 @@
 export const QuillProps = {
     placeholder: {
         type: String,
-        default: '请输入......',
+        default: '',
     },
     toolbarOptions: {
         type: Array,
