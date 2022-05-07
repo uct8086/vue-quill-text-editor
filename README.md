@@ -22,7 +22,7 @@ app.mount("#app-wrapper");
 # 3、get quill instance:
 
 ```html
-  <vue-quill-text-editor  ref="quillRef" :placeholder="place" />
+  <vue-quill-text-editor  ref="quillRef" :placeholder="place" :uploadFun="uploadFun" />
 ```
 
 ```javascript

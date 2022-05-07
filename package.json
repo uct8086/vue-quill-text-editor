@@ -1,6 +1,6 @@
 {
   "name": "vue-quill-text-editor",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Quill rich text editor component encapsulated with Vue3",
   "author": "uct8086",
   "license": "ISC",
