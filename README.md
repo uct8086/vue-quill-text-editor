@@ -2,11 +2,11 @@
 Quill rich text editor component encapsulated with Vue3
 
 
-# install
+# 1、install
 
     npm install
 
-# import into project:
+# 2、import into project:
 
 ```javascript
 import VueQuillTextEditor from 'vue-quill-text-editor';
@@ -19,14 +19,14 @@ app.use(VueQuillTextEditor);
 app.mount("#app-wrapper");
 
 ```
-# get quill instance:
+# 3、get quill instance:
 
 ```html
   <vue-quill-text-editor  ref="quillRef" :placeholder="place" />
 ```
 
 ```javascript
-...
+
 setup() {
     const quillRef = ref();
     watch(quillRef, async (val) => {
@@ -46,17 +46,51 @@ setup() {
         place: 'this is a test.'
     };
 }
-...
 
+```
+
+# 4、 image upload with Url 
+
+this is my case: 
+
+```javascript
+const doUpload = async (formData) => {
+    try {
+        // request is axios instance
+        const res = await request(API.uploadImage, formData, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        return res.url;
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const uploadFun = async (file) => {
+    try {
+        const oMyForm = new FormData();
+        oMyForm.append('fileField', file);
+        return new Promise((resolve, reject) => {
+            // do some validation
+            resolve(await doUpload(oMyForm));
+            ...
+        });
+    } catch (e) {
+        console.error(e);
+    }
+};
 ```
 
 # props:
 
 |name|type|default|
 |---|---|---|
-|placeholder|String|请输入......|
+|placeholder|String||
 |toolbarOptions|Array|official demo config|
-
+|uploadFun|Function| rewrite image upload logic
 ---
 
 
