@@ -11540,7 +11540,10 @@ const QuillProps = {
             ['clean']                                         // remove formatting button
         ]
     },
-    
+    uploadFun: {
+        type: Function,
+        default: null,
+    },
 };
 
 //
@@ -11549,9 +11552,7 @@ Quill.register("modules/imageUploader", ImageUploader);
 var script = defineComponent({
   name: "VueQuillTextEditor",
   props: QuillProps,
-  // emits: ["blur", "focus", "disable", "enable", "hasFocus", "update"],
-  emits: ['uploadFun'],
-  setup(props, { emit }) {
+  setup(props) {
     const quillRef = ref();
     const quillInstance = ref();
 
@@ -11563,14 +11564,7 @@ var script = defineComponent({
           toolbar: toolbarOptions,
           imageUploader: {
             upload: async (file) => {
-              return await emit('uploadFun', file);
-              // return new Promise((resolve, reject) => {
-              //   setTimeout(() => {
-              //     resolve(
-              //       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png"
-              //     );
-              //   }, 3500);
-              // });
+              return await props.uploadFun(file);
             },
           },
         },

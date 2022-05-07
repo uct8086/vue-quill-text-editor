@@ -24,5 +24,8 @@ export const QuillProps = {
             ['clean']                                         // remove formatting button
         ]
     },
-    
+    uploadFun: {
+        type: Function,
+        default: null,
+    },
 };
