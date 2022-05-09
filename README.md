@@ -2,9 +2,19 @@
 Quill rich text editor component encapsulated with Vue3
 
 
+
+# props:
+
+|name|type|default|
+|---|---|---|
+|placeholder|String||
+|toolbarOptions|Array|official demo config|
+|uploadFun|Function| rewrite image upload logic
+---
+
 # 1、install
 
-    npm install
+    npm install vue-quill-text-editor -D
 
 # 2、import into project:
 
@@ -83,14 +93,4 @@ const uploadFun = async (file) => {
 };
 ```
 
-# props:
-
-|name|type|default|
-|---|---|---|
-|placeholder|String||
-|toolbarOptions|Array|official demo config|
-|uploadFun|Function| rewrite image upload logic
----
-
-
-# same as official quill, enjoy!
+**<h2>same as official quill, enjoy!</h2>**
