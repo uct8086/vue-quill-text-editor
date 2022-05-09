@@ -37,7 +37,6 @@ setup() {
             const content = quillInstance.container.firstChild.innerHTML;
             console.log('quill content: ', content);
         });
-        quillInstance.setContents([{ insert: '_' }]);
         // set html content
         quillInstance.container.firstChild.innerHTML = temp;
     });
