@@ -11551,7 +11551,6 @@
     };
 
     //
-    Quill.register("modules/imageUploader", ImageUploader);
 
     var script = vue.defineComponent({
       name: "VueQuillTextEditor",
@@ -11560,8 +11559,19 @@
         const quillRef = vue.ref();
         const quillInstance = vue.ref();
 
-        vue.onMounted(() => {
-          const toolbarOptions = props.toolbarOptions;
+        const initNoToolBar = () => {
+          quillInstance.value = new Quill(quillRef.value, {
+            debug: "error",
+            modules: {
+              toolbar: false,
+            },
+            placeholder: props.placeholder,
+            theme: 'snow',
+          });
+        };
+
+        const initCommon = () => {
+          Quill.register("modules/imageUploader", ImageUploader);
           quillInstance.value = new Quill(quillRef.value, {
             debug: "error",
             modules: {
@@ -11575,6 +11585,15 @@
             placeholder: props.placeholder,
             theme: "snow",
           });
+        };
+
+        vue.onMounted(() => {
+          const toolbarOptions = props.toolbarOptions;
+          if (!toolbarOptions) {
+            initNoToolBar();
+          } else {
+            initCommon();
+          }
         });
 
         return {

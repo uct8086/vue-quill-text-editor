@@ -11547,7 +11547,6 @@ const QuillProps = {
 };
 
 //
-Quill.register("modules/imageUploader", ImageUploader);
 
 var script = defineComponent({
   name: "VueQuillTextEditor",
@@ -11556,8 +11555,19 @@ var script = defineComponent({
     const quillRef = ref();
     const quillInstance = ref();
 
-    onMounted(() => {
-      const toolbarOptions = props.toolbarOptions;
+    const initNoToolBar = () => {
+      quillInstance.value = new Quill(quillRef.value, {
+        debug: "error",
+        modules: {
+          toolbar: false,
+        },
+        placeholder: props.placeholder,
+        theme: 'snow',
+      });
+    };
+
+    const initCommon = () => {
+      Quill.register("modules/imageUploader", ImageUploader);
       quillInstance.value = new Quill(quillRef.value, {
         debug: "error",
         modules: {
@@ -11571,6 +11581,15 @@ var script = defineComponent({
         placeholder: props.placeholder,
         theme: "snow",
       });
+    };
+
+    onMounted(() => {
+      const toolbarOptions = props.toolbarOptions;
+      if (!toolbarOptions) {
+        initNoToolBar();
+      } else {
+        initCommon();
+      }
     });
 
     return {
