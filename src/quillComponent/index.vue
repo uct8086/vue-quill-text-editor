@@ -8,7 +8,6 @@ import ImageUploader from './quill.imageUploader';
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import { QuillProps } from "./props";
-Quill.register("modules/imageUploader", ImageUploader);
 
 export default defineComponent({
   name: "VueQuillTextEditor",
@@ -17,8 +16,19 @@ export default defineComponent({
     const quillRef = ref();
     const quillInstance = ref();
 
-    onMounted(() => {
-      const toolbarOptions = props.toolbarOptions;
+    const initNoToolBar = () => {
+      quillInstance.value = new Quill(quillRef.value, {
+        debug: "error",
+        modules: {
+          toolbar: false,
+        },
+        placeholder: props.placeholder,
+        theme: 'snow',
+      });
+    }
+
+    const initCommon = () => {
+      Quill.register("modules/imageUploader", ImageUploader);
       quillInstance.value = new Quill(quillRef.value, {
         debug: "error",
         modules: {
@@ -32,6 +42,15 @@ export default defineComponent({
         placeholder: props.placeholder,
         theme: "snow",
       });
+    }
+
+    onMounted(() => {
+      const toolbarOptions = props.toolbarOptions;
+      if (!toolbarOptions) {
+        initNoToolBar();
+      } else {
+        initCommon();
+      }
     });
 
     return {

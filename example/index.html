@@ -6,44 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./quill.snow.css" rel="stylesheet">
     <script src="./quill.js"></script>
-    <title>demo</title>
+    <title>example</title>
 </head>
 <body>
-    <div id="test"></div>
-
+    <div id="app-wrapper"></div>
 </body>
 <script type="module">
-const dom = document.getElementById('test');
-let quill = new Quill(dom, {
-    modules: {
-        toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            ['blockquote', 'code-block'],
+import { createApp, defineComponent, ref, h, onMounted } from './vue.esm-browser.js';
+import ImageUploader from '../src/quillComponent/quill.imageUploader.js';
+import { QuillProps } from "../src/quillComponent/props.js";
+// import example from './example.vue';
+const TestComponent = defineComponent({
+  name: 'TestComponent',
+  props: QuillProps,
+  setup(props, ctx) {
+    onMounted(() => {
+      const dom = document.getElementById('test');
+      const toolbarOptions = false; //props.toolbarOptions;
+      if (!toolbarOptions) {
+        let quill = new window.Quill(dom, {
+          debug: "error",
+          modules: {
+            toolbar: false,
+          },
+          placeholder: props.placeholder,
+          theme: 'snow',
+        });
+        return;
+      }
+      Quill.register("modules/imageUploader", ImageUploader);
+      // console.log(dom);
+      let quill = new window.Quill(dom, {
+          debug: "error",
+          modules: {
+            toolbar: toolbarOptions,
+            imageUploader: {
+              upload: async (file) => {
+                return await props.uploadFun(file);
+              },
+            },
+          },
+          placeholder: props.placeholder,
+          // modules: {
+          //   toolbar:false,
+            
+              // toolbar: [
+              //     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+              //     ['blockquote', 'code-block'],
 
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-            [{ 'direction': 'rtl' }],                         // text direction
+              //     [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+              //     [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+              //     [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+              //     [{ 'direction': 'rtl' }],                         // text direction
 
-            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-            [ 'link', 'image' ],          // add's image support
+              //     [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+              //     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+              //     [ 'link', 'image' ],          // add's image support
 
-            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-            [{ 'align': [] }],
+              //     [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+              //     [{ 'align': [] }],
 
-            ['clean']                                         // remove formatting button
-        ]
-    },
-    theme: 'snow'
-  });
-quill.on('text-change', function(delta, oldDelta, source) {
-    debugger;
-  if (source == 'api') {
-    console.log("An API call triggered this change.");
-  } else if (source == 'user') {
-    console.log("A user action triggered this change.");
-  }
-});
+              //     ['clean']                                         // remove formatting button
+              // ]
+          // },
+          theme: 'snow'
+      });
+      quill.on('text-change', function(delta, oldDelta, source) {
+          if (source == 'api') {
+              console.log("An API call triggered this change.");
+          } else if (source == 'user') {
+              console.log("A user action triggered this change.");
+          }
+      });
+    })
+    
+  },
+  render() {
+      return h('div', { id: 'test'});
+  },
+})
+
+const myApp = createApp(TestComponent);
+
+myApp.mount("#app-wrapper");
 </script>
 </html>

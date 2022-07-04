@@ -43,7 +43,8 @@
     "rollup": "^2.38.5",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-vue": "6.0.0-beta.6",
-    "vue": "^3.2.24",
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.16",
     "webpack": "^5.72.0"
   }
 }
