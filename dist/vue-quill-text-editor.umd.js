@@ -11524,7 +11524,7 @@
             default: '',
         },
         toolbarOptions: {
-            type: Array,
+            type: [Array, Boolean],
             default: [
                 ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
                 ['blockquote', 'code-block'],
@@ -11575,7 +11575,7 @@
           quillInstance.value = new Quill(quillRef.value, {
             debug: "error",
             modules: {
-              toolbar: toolbarOptions,
+              toolbar: props.toolbarOptions,
               imageUploader: {
                 upload: async (file) => {
                   return await props.uploadFun(file);

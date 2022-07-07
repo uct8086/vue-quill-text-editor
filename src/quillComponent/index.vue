@@ -32,7 +32,7 @@ export default defineComponent({
       quillInstance.value = new Quill(quillRef.value, {
         debug: "error",
         modules: {
-          toolbar: toolbarOptions,
+          toolbar: props.toolbarOptions,
           imageUploader: {
             upload: async (file) => {
               return await props.uploadFun(file);

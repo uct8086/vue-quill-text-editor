@@ -4,7 +4,7 @@ export const QuillProps = {
         default: '',
     },
     toolbarOptions: {
-        type: Array,
+        type: [Array, Boolean],
         default: [
             ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
             ['blockquote', 'code-block'],
