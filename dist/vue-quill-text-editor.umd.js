@@ -158,6 +158,7 @@
         // }
 
         insertToEditor(url) {
+            this.range = this.quill.getSelection();
             const range = this.range;
             // Delete the placeholder image
             this.quill.deleteText(range.index, 3, "user");
