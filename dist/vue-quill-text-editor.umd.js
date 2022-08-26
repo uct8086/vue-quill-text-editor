@@ -161,7 +161,7 @@
             this.range = this.quill.getSelection();
             const range = this.range;
             // Delete the placeholder image
-            this.quill.deleteText(range.index, 3, "user");
+            // this.quill.deleteText(range.index, 3, "user");
             // Insert the server saved image
             this.quill.insertEmbed(range.index, "image", `${url}`, "user");
 
