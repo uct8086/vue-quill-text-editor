@@ -6,6 +6,7 @@ import postcss from 'rollup-plugin-postcss'
 import {name} from '../package.json'
 import commonjs from '@rollup/plugin-commonjs';
 import postcssImport from 'postcss-import';
+import image from '@rollup/plugin-image';
 // 处理 apply 以及内置 mixin
 // import tailwindcss from 'tailwindcss'
 
@@ -28,6 +29,7 @@ export default {
         nodeResolve(),
         // typescript({tsconfigOverride: overrides}),
         vue(),
+        image(),
         postcss({
             extensions: [".css",],
             extract: true,

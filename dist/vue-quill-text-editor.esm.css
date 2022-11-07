@@ -949,8 +949,14 @@ body, html {
   border: 1px solid #ccc;
 }
 
-.quill-container[data-v-28c6c954] {
+.quill-container {
   margin: 0;
   min-height: 400px;
   width: 100%;
+}
+.ql-formats .ql-insert-btn,
+.ql-formats .ql-img-list {
+  background-size: 22px 22px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }

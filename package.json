@@ -33,6 +33,7 @@
   "homepage": "https://github.com/uct8086/vue-quill-text-editor#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.3",
+    "@rollup/plugin-image": "^3.0.1",
     "@rollup/plugin-node-resolve": "^11.1.1",
     "@vue/compiler-sfc": "^3.0.0",
     "less": "^4.1.2",

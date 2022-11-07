@@ -16,16 +16,14 @@ export const QuillProps = {
 
             [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
             [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-            [ 'link', 'image' ],          // add's image support
+            [ 'link' ],          // add's image support
 
             [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
             [{ 'align': [] }],
 
-            ['clean']                                         // remove formatting button
+            ['clean'],                                         // remove formatting button
+            [{ 'insert-btn': 'insert-btn' }],
+            [{ 'img-list': 'img-list' }]
         ]
-    },
-    uploadFun: {
-        type: Function,
-        default: null,
     },
 };
