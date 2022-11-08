@@ -159,10 +159,10 @@ class ImageUploader {
         // Delete the placeholder image
         // this.quill.deleteText(range.index, 3, "user");
         // Insert the server saved image
-        this.quill.insertEmbed(range.index, "image", `${url}`, "user");
+        this.quill.insertEmbed(range.index, "image", `${url}`);
 
         range.index++;
-        this.quill.setSelection(range, "user");
+        this.quill.setSelection(range);
     }
 
     removeBase64Image() {
